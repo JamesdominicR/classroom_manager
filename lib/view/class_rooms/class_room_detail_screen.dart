@@ -2,13 +2,16 @@ import 'package:classroom_manager/core/theme/app_colors.dart';
 import 'package:classroom_manager/core/utils/assets.dart';
 import 'package:classroom_manager/core/utils/constants.dart';
 import 'package:classroom_manager/core/utils/string_constants.dart';
-import 'package:classroom_manager/view/class_rooms/conference_room.dart';
+import 'package:classroom_manager/provider/class_room/class_room_provider.dart';
 import 'package:classroom_manager/view/class_rooms/widgets/classroom_detail_card_widget.dart';
+import 'package:classroom_manager/view/subjects/subject_screen.dart';
 import 'package:classroom_manager/widgets/common_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ClassRoomDetailScreen extends StatelessWidget {
-  const ClassRoomDetailScreen({super.key});
+  final int? id;
+  const ClassRoomDetailScreen({super.key,this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +26,31 @@ class ClassRoomDetailScreen extends StatelessWidget {
               const Align(
                 alignment: Alignment.center,
                 child: Text(
-                  "Oldlacle",
+                  StringConstants.CLASSROOM_DETAILS,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
               Constants.pheight04(context),
-              ClassroomDetailCardWidget(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ConferenceRoomScreen()));
-                },
-                title: StringConstants.ADD_SUBJECT,
-                buttonTitle: StringConstants.ADD,
+              Consumer<ClassRoomProvider>(
+                builder: (context,classRoomProvider,_) {
+                  classRoomProvider.getClassroomDetails(id ?? 0);
+                  return 
+                 ClassroomDetailCardWidget(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SubjectScreen(addSubject: true)));
+                    },
+                    title: classRoomProvider.classroomDetailModel.subject?.isNotEmpty == true
+                    ? classRoomProvider.classroomDetailModel.subject ?? ""
+                    : StringConstants.ADD_SUBJECT,
+                     
+                    buttonTitle: classRoomProvider.classroomDetailModel.subject?.isNotEmpty == true
+                    ? StringConstants.CHANGE
+                    : StringConstants.ADD 
+                  );
+                }
               ),
               Constants.pheight08(context),
               Row(

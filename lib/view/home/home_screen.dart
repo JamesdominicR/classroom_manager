@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
         return Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (BuildContext context) => const SubjectScreen()));
+                builder: (BuildContext context) => const SubjectScreen(addSubject: false)));
       case 2:
         return Navigator.push(
             context,

@@ -1,6 +1,7 @@
 import 'package:classroom_manager/core/theme/app_colors.dart';
 import 'package:classroom_manager/core/utils/constants.dart';
 import 'package:classroom_manager/core/utils/string_constants.dart';
+import 'package:classroom_manager/view/class_rooms/conference_room.dart';
 import 'package:classroom_manager/view/registrations/new_registration_screen.dart';
 import 'package:classroom_manager/view/registrations/widgets/button_widget.dart';
 import 'package:classroom_manager/view/registrations/widgets/register_card.dart';
@@ -36,7 +37,13 @@ class RegistrationScreen extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ConferenceRoomScreen()));
+                        },
                         child:
                             const RegisterCard(title: 'Registration id: #660'),
                       ),

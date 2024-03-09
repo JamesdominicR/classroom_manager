@@ -19,4 +19,10 @@ abstract class StringConstants {
   static const String YES = "Yes";
   static const String DO_YOU_WANT_DELETE = "Do you want to delete";
   static const String SUBJECT_DETAIL = "Subject Detail";
+  static const String NO_DATA = "No data";
+  static const String AGE = "Age";
+  static const String STUDENT_DETAIL = "Student Detail";
+  static const String CREDIT = "Credit";
+  static const String SEATS = "Seats";
+  static const String CLASSROOM_DETAILS = "Classroom Details";
 }
