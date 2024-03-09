@@ -1,3 +1,4 @@
+import 'package:classroom_manager/core/app_providers.dart';
 import 'package:classroom_manager/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,13 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen()
+    return AppProviders(
+      child: MaterialApp(
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
+          debugShowCheckedModeBanner: false,
+          home: const HomeScreen()),
     );
   }
 }
