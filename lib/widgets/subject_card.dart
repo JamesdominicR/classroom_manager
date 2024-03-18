@@ -31,7 +31,7 @@ class SubjectCard extends StatelessWidget {
           ),
           child: Padding(
             padding:
-                const EdgeInsets.only(left: 15, right: 15, bottom: 12, top: 12),
+                const EdgeInsets.only(left: 15, right: 15, bottom: 10, top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
